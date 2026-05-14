@@ -1,9 +1,14 @@
 import { ConfigProvider, theme } from 'antd';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-const ThemeContext = createContext(null);
+type ThemeContextType = {
+    isDarkMode: boolean;
+    toggleTheme: () => void;
+};
 
-export const ThemeProvider = ({ children }) => {
+const ThemeContext = createContext<ThemeContextType | null>(null);
+
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const [isDarkMode, setIsDarkMode] = useState(
         localStorage.getItem('theme') === 'dark'
     );
@@ -39,4 +44,10 @@ export const ThemeProvider = ({ children }) => {
     );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextType => {
+    const context = useContext(ThemeContext);
+    if (!context) {
+        throw new Error('useTheme must be used within a ThemeProvider');
+    }
+    return context;
+};
