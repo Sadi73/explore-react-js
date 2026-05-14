@@ -1,17 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ThemeProvider } from './providers/ThemeProvider.tsx'
+import { RouterProvider } from 'react-router'
+import './App.css'
 import "./i18n"
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import HomePage from './erp/home/HomePage.tsx'
-import './App.css';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-]);
+import { ThemeProvider } from './providers/ThemeProvider.tsx'
+import { router } from './routes.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

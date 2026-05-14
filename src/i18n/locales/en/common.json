@@ -1,5 +1,8 @@
 {
     "welcome": "Welcome",
     "login": "Login",
-    "hello": "Hello {{name}}"
+    "hello": "Hello {{name}}",
+    "feature_under_development": "Feature Under Development",
+    "building_message": "This feature is currently under development. Please check back later.",
+    "back_to_dashboard": "Back to Dashboard"
 }
